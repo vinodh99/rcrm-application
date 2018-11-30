@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 // import { request } from 'http';
 import request from 'superagent';
-import getProducts from 'http';
 // import { Layout, Menu, Icon } from 'antd';
 // import './index.css'; 
 // const { Header, Sider, Content, Footer } = Layout;
 
-const http = httpService();
-class ContentData extends Component {
+
+class AddEmployee extends Component {
 
     constructor(props){
         super(props);
@@ -18,10 +17,6 @@ class ContentData extends Component {
         this.handleSubmitMessage= this.handleSubmitMessage.bind(this);
     }
 
-    loadData = () => {
-        var self = this;
-
-    }
     handleMessageInput(e){
         // e.preventDefault();
         // var object= {};
@@ -71,4 +66,4 @@ class ContentData extends Component {
 
 
 
-export default ContentData;
+export default AddEmployee;

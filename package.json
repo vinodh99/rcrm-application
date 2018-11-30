@@ -6,8 +6,10 @@
     "antd": "^3.10.9",
     "express": "^4.16.4",
     "mongoose": "^5.3.14",
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-router": "^3.2.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "superagent": "^4.0.0"
