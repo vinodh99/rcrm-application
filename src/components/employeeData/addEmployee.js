@@ -1,6 +1,8 @@
+
 import React, { Component } from 'react';
 // import { request } from 'http';
 import request from 'superagent';
+import './addEmployee.css';
 // import { Layout, Menu, Icon } from 'antd';
 // import './index.css'; 
 // const { Header, Sider, Content, Footer } = Layout;
@@ -11,25 +13,48 @@ class AddEmployee extends Component {
     constructor(props){
         super(props);
         this.state={
-            firstName:''
+            firstName:'',
+            lastName:'',
+
         }
         this.handleMessageInput = this.handleMessageInput.bind(this);
         this.handleSubmitMessage= this.handleSubmitMessage.bind(this);
     }
 
     handleMessageInput(e){
+        const target = e.target;
+        let value='';
+        switch(target.name){
+            case "firstName":
+            value = target.value;
+            case "lastName":
+            value = target.value;
+            case "emailAddress":
+            value = target.value3;
+            case "homePhone":
+            value = target.value;
+            case "workPhone":
+            value = target.value;
+            case "dob":
+            value = target.value;
+        }
         // e.preventDefault();
         // var object= {};
         // object[firstName] = e.target.value;
-        this.setState({firstName: e.target.value});
+        this.setState({
+            [target.type]: value
+        });
         // console.log("xyz"+this.state.firstName)
     }
     handleSubmitMessage(e){
-        // e.preventDefault();
         console.log('satrting to submit profile');
-        // if(this.state.isFormFilledProfile){
             const data = {
-                firstName: this.state.firstName
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                emailAddress: this.state.emailAddress,
+                homePhone: this.state.homePhone,
+                workPhone: this.state.workPhone,
+                dob: this.state.dob
               };
         // console.log(data);
         request.post('http://localhost:3002/product')
@@ -42,19 +67,49 @@ class AddEmployee extends Component {
             console.log('success');
               }
          });
-    //  }
+
     }
-
-
+    
   render() {
     return (
         <div>
         <div>
           <form onSubmit={this.handleSubmitMessage}>
             <input
-            //   type= 'text' 
-            onChange={this.handleMessageInput}
+            name= "firstName"
+            type= "value"
             value={this.state.firstName}                
+            onChange={this.handleMessageInput}
+            />
+            <input
+            name= "lastName"
+            type= "value"
+            value={this.state.lastName}                
+            onChange={this.handleMessageInput}
+            />
+            <input
+            name= "emailAddress"
+            type= "value"
+            value={this.state.lastName}                
+            onChange={this.handleMessageInput}
+            />
+            <input
+            name= "homePhone"
+            type= "value"
+            value={this.state.lastName}                
+            onChange={this.handleMessageInput}
+            />
+            <input
+            name= "workPhone"
+            type= "value"
+            value={this.state.lastName}                
+            onChange={this.handleMessageInput}
+            />
+            <input
+            name= "dob"
+            type= "value"
+            value={this.state.lastName}                
+            onChange={this.handleMessageInput}
             />
             <button type='Submit' value='Submit'>Submit</button>
           </form>

@@ -1,5 +1,10 @@
 import React from "react";
-import { Route, IndexRoute} from 'react-router';
+import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
+// import Login from "../components/Login";
+// import Home from "../components/Home";
+// import CreateNewRequest from "../components/CreateNewRequest";
+// import React from "react";
+// import { Route, IndexRoute} from 'react-router';
 
 // import {  Switch, Redirect, BrowserRouter } from "react-router-dom";
 //import Login from "../components/login/login";
@@ -8,7 +13,7 @@ import DashBoard from "./components/dash-board/dashBoard";
 import AddEmployee from './components/employeeData/addEmployee';
 import SearchEmployee from './components/employeeData/searchEmployee';
 import App from "./containers/App";
-import HomePage from './components/HomePage';
+// import HomePage from './components/HomePage';
 // import CreateNewRequest from "../components/CreateNewRequest";
 
 
@@ -17,15 +22,19 @@ import HomePage from './components/HomePage';
 // other React components.
 // IndexRoute maps HomePage component to the default route
 
-export default (
-    <Route path ="/" component ={App}>
-        <IndexRoute component ={HomePage} />
-        {/* <Route path = 'AddEmployee' component = {AddEmployee} /> */}
+export default () => {
+    return (
+        <BrowserRouter>
+        <Switch>
+          <Route exact path="/DashBoard" render={props => <DashBoard {...props} />} />
+          {/* <Route exact path="/home" render={props => <Home {...props} />} /> */}
+          <Route exact path="/AddEmployee" render={props => <AddEmployee {...props} />} />
+          <Route exact path="/SearchEmployee" render={props => <SearchEmployee {...props} />} />
 
-        <Route path = 'library' component = {AddEmployee} />
-
-    </Route>
-);
+          <Redirect to="/DashBoard" />
+        </Switch>
+      </BrowserRouter>
+    )};
 
 // export default (
     // <Route path ="/" component ={App}>
