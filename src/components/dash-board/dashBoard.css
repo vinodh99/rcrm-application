@@ -14,10 +14,11 @@
   }
   
 .logo {
-    background-image: url("https://cdn-images-1.medium.com/max/1600/1*Y2DncmJTLK6t9qmmqVzJHA.jpeg");
-    height: 100px;
-    background: rgba(255,255,255,.2);
-    margin: 16px;
+    /* background-image: url("https://global-uploads.webflow.com/576d13c8eb5794cb5888fc50/58096e8493413a7754034fdb_reliablesoftware.png"); */
+    /* height: 200px; */
+    /* background-image:  url("https://global-uploads.webflow.com/576d13c8eb5794cb5888fc50/58096e8493413a7754034fdb_reliablesoftware.png"); */
+    /* background: rgba(255,255,255,.2); */
+    /* margin: 16px; */
   }
   
   /* .ant-menu-item{background-image: url("https://cdn-images-1.medium.com/max/1600/1*Y2DncmJTLK6t9qmmqVzJHA.jpeg");} */

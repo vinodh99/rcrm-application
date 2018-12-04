@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
+import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import './index.css';
+import configureStore from './store/configureStore';
 import App from './containers/App';
 // import routes from './routes';
 import * as serviceWorker from './serviceWorker';
 
+const store = configureStore();
 ReactDOM.render(
     <BrowserRouter>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
         < App />
-    {/* </Provider> */}
+    </Provider>
     </BrowserRouter>
     , 
     document.getElementById('root'));

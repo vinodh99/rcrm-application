@@ -12,18 +12,21 @@ import DashBoard from "./components/dash-board/dashBoard";
 // import contentData from '../components/content/index';
 import AddEmployee from './components/employeeData/addEmployee';
 import SearchEmployee from './components/employeeData/searchEmployee';
-import App from "./containers/App";
 // import HomePage from './components/HomePage';
 // import CreateNewRequest from "../components/CreateNewRequest";
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';  
 
 
 // Map components to different routes.
 // The parent component wraps other components and thus serves as  the entrance to 
 // other React components.
 // IndexRoute maps HomePage component to the default route
+const store = configureStore();
 
 export default () => {
     return (
+        // <Provider store={store}>
         <BrowserRouter>
         <Switch>
           <Route exact path="/DashBoard" render={props => <DashBoard {...props} />} />
@@ -34,6 +37,7 @@ export default () => {
           <Redirect to="/DashBoard" />
         </Switch>
       </BrowserRouter>
+    //   </Provider>
     )};
 
 // export default (

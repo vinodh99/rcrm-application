@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 // import { request } from 'http';
 import request from 'superagent';
+import {Form, Input,Row,Col} from 'antd';
 import './addEmployee.css';
 // import { Layout, Menu, Icon } from 'antd';
 // import './index.css'; 
@@ -73,46 +74,54 @@ class AddEmployee extends Component {
   render() {
     return (
         <div>
-        <div>
-          <form onSubmit={this.handleSubmitMessage}>
-            <input
-            name= "firstName"
-            type= "value"
-            value={this.state.firstName}                
-            onChange={this.handleMessageInput}
-            />
-            <input
-            name= "lastName"
-            type= "value"
-            value={this.state.lastName}                
-            onChange={this.handleMessageInput}
-            />
-            <input
-            name= "emailAddress"
-            type= "value"
-            value={this.state.lastName}                
-            onChange={this.handleMessageInput}
-            />
-            <input
+        <div className= "input-form">
+          <Form onSubmit={this.handleSubmitMessage}>
+          <Row>
+               <Col>
+                    <Input
+                        name= "firstName"
+                        type= "value"
+                        value={this.state.lastName}                
+                        onChange={this.handleMessageInput}
+                        placeholder= "first name"
+                    />
+                    <Input
+                        name= "lastName"
+                        type= "value"
+                        value={this.state.lastName}                
+                        onChange={this.handleMessageInput}
+                        placeholder= "last name"
+                    />
+               </Col>
+               <Col>
+               <Input
             name= "homePhone"
             type= "value"
             value={this.state.lastName}                
             onChange={this.handleMessageInput}
+            placeholder= "home-phone"
             />
-            <input
+
+            <Input
             name= "workPhone"
             type= "value"
             value={this.state.lastName}                
             onChange={this.handleMessageInput}
+            placeholder= "work-phone"
             />
-            <input
+               </Col>
+
+          </Row>
+
+            <Input
             name= "dob"
             type= "value"
             value={this.state.lastName}                
             onChange={this.handleMessageInput}
+            placeholder= "date of birth"
             />
             <button type='Submit' value='Submit'>Submit</button>
-          </form>
+          </Form>
         </div>
       </div>
     );
