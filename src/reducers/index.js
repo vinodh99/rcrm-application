@@ -1,25 +1,31 @@
-// import employees from './employeeSearch';
-// import {combineReducers} from './redux';
-// const rootReducer = combineReducers({
-//     employees: employees
-// })
+import employee from './employeeSearch';
+import {combineReducers} from 'redux';
+const rootReducer = combineReducers({
+    employee
+})
 
-// export default rootReducer;
+export default rootReducer;
 
-import initialState from './initialState';
-import * as types from '../constants/actionTypes';
-import searchEmployee from '../components/employeeData/searchEmployee';
+// import initialState from './initialState';
+// import * as types from '../constants/actionTypes';
 
-const reducer= (state = initialState, action) => {
-    // console.log('im reducer')
-    switch(action.type){
-        // case types.EMPLOYEE_LOAD_SUCCESS:
-        // return  employees= Object.assign({}, state, action.employees)
-        case types.SEARCHED_EMPLOYEE:
-        // console.log(action)
-        return {...state, searchedEmployee: action.payload};
-        default:
-        return state;
-    }
-}
-export default reducer;
+// const reducer = (state, action) => {
+//     // console.log('im reducer')
+//     switch(action.type){
+//         // case types.EMPLOYEE_LOAD_SUCCESS:
+//         // return  Object.assign({}, state, action.videos)
+//         case types.SEARCHED_EMPLOYEE:
+//             let newState = {...state};
+//             if(action.employee !== undefined){
+//             newState = Object.assign({}, state, {employee : Object.assign({}, action.employee)})
+//             } 
+//             return {...newState};
+//             // else`{ 
+//                 // return 'bull shit'
+//             // }
+//         // return [...state, action];
+//         default:
+//         return state;
+//     }
+// }
+// export default reducer;

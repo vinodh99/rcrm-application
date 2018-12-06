@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 // import { request } from 'http';
 import request from 'superagent';
-import {Form, Input,Row,Col} from 'antd';
+import {Form, Input,Row,Col, Button} from 'antd';
 import './addEmployee.css';
 // import { Layout, Menu, Icon } from 'antd';
 // import './index.css'; 
@@ -14,41 +14,21 @@ class AddEmployee extends Component {
     constructor(props){
         super(props);
         this.state={
-            firstName:'',
-            lastName:'',
-
         }
         this.handleMessageInput = this.handleMessageInput.bind(this);
         this.handleSubmitMessage= this.handleSubmitMessage.bind(this);
     }
 
     handleMessageInput(e){
-        const target = e.target;
-        let value='';
-        switch(target.name){
-            case "firstName":
-            value = target.value;
-            case "lastName":
-            value = target.value;
-            case "emailAddress":
-            value = target.value3;
-            case "homePhone":
-            value = target.value;
-            case "workPhone":
-            value = target.value;
-            case "dob":
-            value = target.value;
-        }
-        // e.preventDefault();
-        // var object= {};
-        // object[firstName] = e.target.value;
+ 
         this.setState({
-            [target.type]: value
+            [e.target.name]: e.target.value
         });
         // console.log("xyz"+this.state.firstName)
     }
     handleSubmitMessage(e){
-        console.log('satrting to submit profile');
+        // e.preventDefault();
+        console.log('starting to submit profile');
             const data = {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -70,18 +50,18 @@ class AddEmployee extends Component {
          });
 
     }
-    
+
   render() {
     return (
         <div>
         <div className= "input-form">
-          <Form onSubmit={this.handleSubmitMessage}>
+          <Form>
           <Row>
                <Col>
                     <Input
                         name= "firstName"
-                        type= "value"
-                        value={this.state.lastName}                
+                        type= "text"
+                        value={this.state.firstName}                
                         onChange={this.handleMessageInput}
                         placeholder= "first name"
                     />
@@ -97,7 +77,7 @@ class AddEmployee extends Component {
                <Input
             name= "homePhone"
             type= "value"
-            value={this.state.lastName}                
+            value={this.state.homePhone}                
             onChange={this.handleMessageInput}
             placeholder= "home-phone"
             />
@@ -105,7 +85,7 @@ class AddEmployee extends Component {
             <Input
             name= "workPhone"
             type= "value"
-            value={this.state.lastName}                
+            value={this.state.workPhone}                
             onChange={this.handleMessageInput}
             placeholder= "work-phone"
             />
@@ -116,11 +96,11 @@ class AddEmployee extends Component {
             <Input
             name= "dob"
             type= "value"
-            value={this.state.lastName}                
+            value={this.state.dob}                
             onChange={this.handleMessageInput}
             placeholder= "date of birth"
             />
-            <button type='Submit' value='Submit'>Submit</button>
+            <Button type='Submit'onClick={this.handleSubmitMessage}>Submit</Button>
           </Form>
         </div>
       </div>

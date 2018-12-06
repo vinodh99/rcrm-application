@@ -2,40 +2,112 @@ import React, { Component } from 'react';
 import EmployeeData from '../../api/api';
 import {searchedEmployeeAction} from '../../actions/employeeActions';
 import {connect} from 'react-redux';
+import {Form, Input, Button} from 'antd';
+import './addEmployee.css';
+import { cloneableGenerator } from 'redux-saga/utils';
+import { Table } from 'antd';
 // import employeeSearch from '../../reducers/employeeSearch';
 class SearchEmployee extends Component {
 
-    // constructor(props){
-    //     super(props);
-
-    //     }
-    
+    constructor(props){
+        super(props);
+          this.state = {
+            value:'',
+          }
+          // this.handleUserData = this.handleUserdata.bind(this)
+          this.handleSubmitMessage = this.handleSubmitMessage.bind(this)
+          this.handleMessageInput = this.handleMessageInput.bind(this)
+        }
     componentDidMount(){
-      this.props.dispatch(searchedEmployeeAction('df'))
-      // EmployeeData().then(data =>{
-      //   console.log(data);
-      // })
+      this.props.dispatch(searchedEmployeeAction())
+        }
+    
+    handleSubmitMessage(e){
+      e.preventDefault();
+      const data = this.state.value;
+      console.log(data);
+      this.props.dispatch(searchedEmployeeAction(data))
+
+      }
+
+    handleMessageInput(e){
+      this.setState({
+        value: e.target.value
+    });
     }
 
 
-
-
   render() {
-    console.log(this.props.searchedEmployee, 'searched employee_employees')
-
+    const empdata = 
+    this.props.employees;
+    // console.log('im here'+JSON. stringify(this.props.employees));
+    // [{
+    //   // key: '1',
+    //   "firstName": "Mike",
+    //   age: 32,
+    //   address: '10 Downing Street'
+    // }, {
+    //   // key: '2',
+    //   firstName: 'John',
+    //   age: 42,
+    //   address: '10 Downing Street'
+    // }];
+    const columns = [{
+      title: 'first name',
+      dataIndex: 'firstName',
+      // key: '10',
+    }, {
+      title: 'lastName',
+      dataIndex: 'lastName',
+      // key: '2',
+    }, {
+      title: 'homePhone',
+      dataIndex: 'homePhone',
+      // key: 'homePhone',
+    }]; 
+    // console.log(this.props);
     return (  
-            <div> <h1> I still need to be edited  {this.props.searchedEmployee}</h1></div>
+      <div>
+            <div className="input-form"> 
+            <Form onSubmit={this.handleSubmitMessage}>
+              <Input 
+              type="text" 
+              placeholder="search employee here"
+              value={this.state.value}
+              onChange = {this.handleMessageInput}
+              />
+              <Button onClick={this.handleSubmitMessage}>search</Button>
+
+            </Form>            
+            </div>
+            <div>
+                  <p> {this.props.searchedEmployee} </p>
+            <div>
+                <h4>Middle size table</h4>
+                <Table columns={columns} dataSource={empdata} size="middle" />
+                {/* <h4>Small size table</h4>
+                 <Table columns={columns} dataSource={data} size="small" /> */}
+            </div>
+     
+            </div>
+      </div>
+
     );
   }
 }
 SearchEmployee.propTypes = {
   // Define your PropTypes here
   };
-const mapStateToProps = ({ employees,searchedEmployee }) => ({
-  // employees: employees[0],
-  searchedEmployee: searchedEmployee,
-
-});
+const mapStateToProps = (state) => {
+  // console.log('hello ' + JSON.stringify(state))
+  // const jsondata = Object.keys(state.employee.employees).map(function(key) {
+  //   return [state.employee.employees[key]];
+  // })
+  return {
+    searchedEmployee: state.employee.employee.firstName,
+    employees: state.employee.employees
+  }
+}
 
 
 

@@ -1,4 +1,5 @@
 export default {
-    employees: {},
-    searchedEmployee:''
+    employee: {},
+    employees:[]
+
 }

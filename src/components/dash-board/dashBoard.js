@@ -51,7 +51,6 @@ class DashBoard extends Component {
           // onCollapse={this.onCollapse}
         >
           <div className="logo" />
-          {/* <img src="https://global-uploads.webflow.com/576d13c8eb5794cb5888fc50/58096e8493413a7754034fdb_reliablesoftware.png" alt ="image"></img> */}
           <Menu defaultSelectedKeys={['1']} mode="inline">
                     <img src="https://rsrit.com/wp-content/uploads/2017/12/logo_dark.png" alt ="image" width="200px" height="70px"></img>
 
