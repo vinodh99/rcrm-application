@@ -40,8 +40,6 @@ export default (state=initialState, action) => {
             }
             return {...newState};
         case types.ALL_EMPLOYEES:
-            
-
             return handleAllEmployeeList(state, action);
             
         default:

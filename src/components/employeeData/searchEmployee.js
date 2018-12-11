@@ -12,7 +12,7 @@ class SearchEmployee extends Component {
     constructor(props){
         super(props);
           this.state = {
-            value:'',
+            value:''
           }
           // this.handleUserData = this.handleUserdata.bind(this)
           this.handleSubmitMessage = this.handleSubmitMessage.bind(this)
@@ -29,7 +29,7 @@ class SearchEmployee extends Component {
       this.props.dispatch(searchedEmployeeAction(data))
 
       }
-
+    
     handleMessageInput(e){
       this.setState({
         value: e.target.value
