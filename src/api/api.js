@@ -1,12 +1,13 @@
 // import { resolve } from "url";
 // const baseUrl = 'http://localhost:3010';
 const baseUrl = 'https://swag-api.herokuapp.com';
-
+let that = this;
 export const EmployeeData = (searchQuery) =>{
         //1
+        
         var promise = new Promise((resolve,reject) => {
 //        2
-            fetch(`${this.baseUrl}/product?firstName=${searchQuery}`)
+            fetch(`${baseUrl}/product?firstName=${searchQuery}`)
             .then(res => {
                 //then is chained to whatever fetch is returning
                     // 4
@@ -28,7 +29,7 @@ export const Employees = () =>{
     //1
     var promise = new Promise((resolve,reject) => {
 //        2
-        fetch(`${this.baseUrl}/products`)
+        fetch(`${baseUrl}/products`)
         .then(res => {
             //then is chained to whatever fetch is returning
                 // 4
