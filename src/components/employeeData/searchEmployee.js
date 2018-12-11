@@ -40,18 +40,7 @@ class SearchEmployee extends Component {
   render() {
     const empdata = 
     this.props.employees;
-    // console.log('im here'+JSON. stringify(this.props.employees));
-    // [{
-    //   // key: '1',
-    //   "firstName": "Mike",
-    //   age: 32,
-    //   address: '10 Downing Street'
-    // }, {
-    //   // key: '2',
-    //   firstName: 'John',
-    //   age: 42,
-    //   address: '10 Downing Street'
-    // }];
+
     const columns = [{
       title: 'first name',
       dataIndex: 'firstName',
@@ -83,7 +72,6 @@ class SearchEmployee extends Component {
             <div>
                   <p> {this.props.searchedEmployee} </p>
             <div>
-                <h4>Middle size table</h4>
                 <Table columns={columns} dataSource={empdata} size="middle" />
                 {/* <h4>Small size table</h4>
                  <Table columns={columns} dataSource={data} size="small" /> */}
