@@ -1,0 +1,15 @@
+{
+  "main.css": "/rcrm-application/static/css/main.983d23ad.chunk.css",
+  "main.js": "/rcrm-application/static/js/main.f0ab787d.chunk.js",
+  "main.js.map": "/rcrm-application/static/js/main.f0ab787d.chunk.js.map",
+  "static/css/1.c3da8480.chunk.css": "/rcrm-application/static/css/1.c3da8480.chunk.css",
+  "static/js/1.c87cc136.chunk.js": "/rcrm-application/static/js/1.c87cc136.chunk.js",
+  "static/js/1.c87cc136.chunk.js.map": "/rcrm-application/static/js/1.c87cc136.chunk.js.map",
+  "runtime~main.js": "/rcrm-application/static/js/runtime~main.5599d603.js",
+  "runtime~main.js.map": "/rcrm-application/static/js/runtime~main.5599d603.js.map",
+  "static/css/1.c3da8480.chunk.css.map": "/rcrm-application/static/css/1.c3da8480.chunk.css.map",
+  "static/css/main.983d23ad.chunk.css.map": "/rcrm-application/static/css/main.983d23ad.chunk.css.map",
+  "index.html": "/rcrm-application/index.html",
+  "precache-manifest.b8aa481bfa8d106bab5feae85c51edcf.js": "/rcrm-application/precache-manifest.b8aa481bfa8d106bab5feae85c51edcf.js",
+  "service-worker.js": "/rcrm-application/service-worker.js"
+}
