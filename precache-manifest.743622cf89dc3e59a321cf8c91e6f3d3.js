@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/rcrm-application/static/js/runtime~main.5599d603.js"
   },
   {
-    "revision": "f0ab787da12d587b194d",
-    "url": "/rcrm-application/static/js/main.f0ab787d.chunk.js"
+    "revision": "a989a2f7e03f8a54295f",
+    "url": "/rcrm-application/static/js/main.a989a2f7.chunk.js"
   },
   {
     "revision": "c87cc1364250b55cdba5",
     "url": "/rcrm-application/static/js/1.c87cc136.chunk.js"
   },
   {
-    "revision": "f0ab787da12d587b194d",
+    "revision": "a989a2f7e03f8a54295f",
     "url": "/rcrm-application/static/css/main.983d23ad.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/rcrm-application/static/css/1.c3da8480.chunk.css"
   },
   {
-    "revision": "eb1e6a9df0341ceea807183c08405c3f",
+    "revision": "e3e6689c07661ad65fe344bea4de8c54",
     "url": "/rcrm-application/index.html"
   }
 ];
