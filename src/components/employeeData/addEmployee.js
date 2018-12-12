@@ -38,7 +38,7 @@ class AddEmployee extends Component {
                 dob: this.state.dob
               };
         // console.log(data);
-        request.post('http://localhost:3010/product')
+        request.post('https://swag-api.herokuapp.com/product')
         .send(data)
         .set('Accept', 'application/json')
         .end((err,res)=> {
