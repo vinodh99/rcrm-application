@@ -34,7 +34,7 @@ export default () => {
                 <Route exact path="/AddEmployee" render={props => <AddEmployee {...props} />} />
                 <Route exact path="/SearchEmployee" render={props => <SearchEmployee {...props} />} />
 
-                <Redirect to="/AddEmployee" />
+                <Redirect to="/dashboard" />
             </Switch>
         </BrowserRouter>
         //   </Provider>
