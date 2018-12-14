@@ -1,6 +1,24 @@
 @import '~antd/dist/antd.css';
 h4 { margin-bottom: 16px; }
-.input-form .ant-input {
-  width: 200px;
-  margin: 0 20px 20px 0;
+.input-form {
+  /* padding-right: 5% */
+  width: 100%;
+  margin: 0 30px 30px 0;
+ }
+
+/* .input-form .picture {
+  width: 60000px;
+  margin: 0 30px 40px 0;
+} */
+
+/* .input-form button {
+  margin: 20px 30px 30px 0;
+} */
+
+.radioGroup {
+  margin: 0 30px 30px 0;
 }
+
+/* .submit{
+  align-content: flex-start
+} */

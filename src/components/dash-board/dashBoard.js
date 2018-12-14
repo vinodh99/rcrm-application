@@ -4,7 +4,7 @@ import './dashBoard.css';
 import AddEmployee from '../employeeData/addEmployee';
 import SearchEmployee from '../employeeData/searchEmployee';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 
 const { Header, Content, Footer, Sider, Row, Col } = Layout;
@@ -12,21 +12,21 @@ const SubMenu = Menu.SubMenu;
 
 class DashBoard extends Component {
 
-    constructor(props){
-        super(props);    
-        this.state={
-        isAddEmp:false,
-        isSearchEmp:false
-      };    
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAddEmp: false,
+      isSearchEmp: false
+    };
+  }
 
-    onButtonClicked = (isAdd) => {
-      if(isAdd === "add"){
-        this.setState({ isAddEmp : true, isSearchEmp : false });
-      } else{
-        this.setState({ isSearchEmp : true, isAddEmp : false });
-      }
+  onButtonClicked = (isAdd) => {
+    if (isAdd === "add") {
+      this.setState({ isAddEmp: true, isSearchEmp: false });
+    } else {
+      this.setState({ isSearchEmp: true, isAddEmp: false });
     }
+  }
   // state = {
   //   collapsed: false,
   // };
@@ -42,24 +42,24 @@ class DashBoard extends Component {
     const { isAddEmp, isSearchEmp } = this.state;
 
 
-        return (
+    return (
       // <div>
-          <Layout style={{ minHeight: '100vh' }}>
+      <Layout style={{ minHeight: '100vh' }}>
         <Sider
-          // collapsible
-          // collapsed={this.state.collapsed}
-          // onCollapse={this.onCollapse}
+        // collapsible
+        // collapsed={this.state.collapsed}
+        // onCollapse={this.onCollapse}
         >
           <div className="logo" />
           <Menu defaultSelectedKeys={['1']} mode="inline">
-                    <img src="https://rsrit.com/wp-content/uploads/2017/12/logo_dark.png" alt ="image" width="200px" height="70px"></img>
+            <img src="https://rsrit.com/wp-content/uploads/2017/12/logo_dark.png" alt="image" width="200px" height="70px"></img>
 
-           <SubMenu
+            <SubMenu
               key="sub1"
               title={<span><Icon type="user" /><span>Perosnal Details</span></span>}
             >
-              <Menu.Item key="1" onClick={()=> this.onButtonClicked("add")} >Add Applicant</Menu.Item>
-              <Menu.Item key="2" onClick={()=> this.onButtonClicked("")}>Search Applicant</Menu.Item>
+              <Menu.Item key="1" onClick={() => this.onButtonClicked("add")} >Add Applicant</Menu.Item>
+              <Menu.Item key="2" onClick={() => this.onButtonClicked("")}>Search Applicant</Menu.Item>
             </SubMenu>
             <Menu.Item key="3">
               <Icon type="desktop" />
@@ -87,19 +87,19 @@ class DashBoard extends Component {
             <Menu.Item key="10">
               <Icon type="file" />
               <span>Work Experience</span>
-            </Menu.Item>  
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }} />
           <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 580 }}>
-          <NavLink to={{ pathname: "/AddEmployee" }}>Add Employee</NavLink>
-          {"|"}
-          <NavLink to={{ pathname: "/SearchEmployee" }}>Search Employee</NavLink>
-                {(isAddEmp ? (<AddEmployee {...this.props} />) : (""))}
-                {(isSearchEmp ? (<SearchEmployee  {...this.props} />) : (""))}
+            {/* <Link to={{ pathname: "/AddEmployee" }}>Add Employee</Link>
+            {"|"}
+            <Link to={{ pathname: "/SearchEmployee" }}>Search Employee</Link> */}
+            {(isAddEmp ? (<AddEmployee {...this.props} />) : (""))}
+            {(isSearchEmp ? (<SearchEmployee  {...this.props} />) : (""))}
 
-                    </Content>
+          </Content>
           <Footer style={{ textAlign: 'center' }}>
             {/* Ant Design ©2018 Created by Ant UED */}
           </Footer>
@@ -107,7 +107,7 @@ class DashBoard extends Component {
       </Layout>
 
       // {/* </div> */}
-        
+
     );
   }
 }
@@ -115,4 +115,3 @@ class DashBoard extends Component {
 
 
 export default DashBoard;
-  

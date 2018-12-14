@@ -15,7 +15,7 @@ import SearchEmployee from './components/employeeData/searchEmployee';
 // import HomePage from './components/HomePage';
 // import CreateNewRequest from "../components/CreateNewRequest";
 import configureStore from './store/configureStore';
-import { Provider } from 'react-redux';  
+import { Provider } from 'react-redux';
 
 
 // Map components to different routes.
@@ -28,17 +28,18 @@ export default () => {
     return (
         // <Provider store={store}>
         <BrowserRouter>
-        <Switch>
-          <Route exact path="/DashBoard" render={props => <DashBoard {...props} />} />
-          {/* <Route exact path="/home" render={props => <Home {...props} />} /> */}
-          <Route exact path="/AddEmployee" render={props => <AddEmployee {...props} />} />
-          <Route exact path="/SearchEmployee" render={props => <SearchEmployee {...props} />} />
+            <Switch>
+                <Route exact path="/DashBoard" render={props => <DashBoard {...props} />} />
+                {/* <Route exact path="/home" render={props => <Home {...props} />} /> */}
+                <Route exact path="/AddEmployee" render={props => <AddEmployee {...props} />} />
+                <Route exact path="/SearchEmployee" render={props => <SearchEmployee {...props} />} />
 
-          <Redirect to="/DashBoard" />
-        </Switch>
-      </BrowserRouter>
-    //   </Provider>
-    )};
+                <Redirect to="/AddEmployee" />
+            </Switch>
+        </BrowserRouter>
+        //   </Provider>
+    )
+};
 
 // export default (
     // <Route path ="/" component ={App}>
@@ -56,7 +57,7 @@ export default () => {
 // export default () => {
 //   return (
 
-    
+
 //     <BrowserRouter>
 //       <Switch>
 //         {/* <Route exact path="/login" render={props => <Login {...props} />} /> */}
