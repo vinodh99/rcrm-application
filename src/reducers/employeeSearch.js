@@ -22,21 +22,23 @@ const handleAllEmployeeList = (state, action) => {
     if (action.employees != undefined) {
         newState = Object.assign({}, state, { employees: action.employees })
     }
+    // console.log(newState)
     return { ...newState };
 
 }
 
-const handleSearchedEmployee = (state, action, arr) => {
+const handleSearchedEmployee = (state, action) => {
     // console.log('im reducer')
     let newState = { ...state };
-    let result = [];
     if (action.value != undefined) {
-        for (let val in arr) {
-            if (arr[val].firstName.match(action.value)) {
-                result.push(arr[val])
+        let result = [];
+        for (let val in state.employees) {
+            if (state.employees[val].firstName.match(action.value)) {
+                result.push(state.employees[val])
             }
         }
         newState = Object.assign({}, state, { employee: result })
+        // console.log(newState)
 
     }
     return { ...newState };

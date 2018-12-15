@@ -7,6 +7,8 @@ import './addEmployee.css';
 import { cloneableGenerator } from 'redux-saga/utils';
 import { Table } from 'antd';
 // import employeeSearch from '../../reducers/employeeSearch';
+
+
 class SearchEmployee extends Component {
 
   constructor(props) {
@@ -38,11 +40,17 @@ class SearchEmployee extends Component {
 
   }
 
+  // empdata = () => {
+  //   if (this.props.searchedEmployee.length != 0) {
+  //     return this.props.searchedEmployee;
+  //   }
+  //   else {
+  //     return this.props.employees;
+  //   }
+  // }
 
   render() {
-    const empdata =
-      this.props.employees;
-
+    const empdata = this.props.searchedEmployee;
     const columns = [{
       title: 'first name',
       dataIndex: 'firstName',
@@ -94,7 +102,7 @@ const mapStateToProps = (state) => {
   //   return [state.employee.employees[key]];
   // })
   return {
-    searchedEmployee: state.employee.value,
+    searchedEmployee: state.employee.employee,
     employees: state.employee.employees
   }
 }

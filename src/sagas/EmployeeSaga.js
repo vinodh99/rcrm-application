@@ -6,10 +6,8 @@ import * as types from '../constants/actionTypes';
 export function* searchEmployeeSaga(value) {
 
     try {
-        if (value)
-            yield all([
-                put({ type: types.SEARCHED_EMPLOYEE, value })
-            ]);
+        yield put({ type: types.SEARCHED_EMPLOYEE, value })
+
     } catch (error) {
         yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
     }
@@ -22,10 +20,9 @@ export function* allEmployeesSaga() {
         // const employee = yield call(EmployeeData, value);
 
         // console.log(employees);
-        yield all([
-            // put({type: types.EMPLOYEE_LOAD_SUCCESS, employees}),
-            put({ type: types.ALL_EMPLOYEES, employees: employees }),
-        ]);
+        yield put({ type: types.ALL_EMPLOYEES, employees: employees });
+
+
     } catch (error) {
         yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
     }
