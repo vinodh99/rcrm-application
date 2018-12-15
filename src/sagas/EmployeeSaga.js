@@ -1,19 +1,33 @@
-import {all, put, call} from 'redux-saga/effects';
-import {EmployeeData, Employees} from '../api/api';
+import { all, put, call } from 'redux-saga/effects';
+import { EmployeeData, Employees } from '../api/api';
 import * as types from '../constants/actionTypes';
 
-export function* searchEmployeeSaga({payload}){
-    try{
+// export function* searchEmployeeSaga({value}){
+export function* searchEmployeeSaga(value) {
+
+    try {
+        if (value)
+            yield all([
+                put({ type: types.SEARCHED_EMPLOYEE, value })
+            ]);
+    } catch (error) {
+        yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
+    }
+}
+
+export function* allEmployeesSaga() {
+    try {
         // console.log(payload+'here I am ');
-        const employee = yield call(EmployeeData,payload);
-        const employees = yield call(Employees)
+        const employees = yield call(Employees);
+        // const employee = yield call(EmployeeData, value);
+
         // console.log(employees);
         yield all([
             // put({type: types.EMPLOYEE_LOAD_SUCCESS, employees}),
-            put({type: types.ALL_EMPLOYEES, employees: employees}),
-            put({type: types.SEARCHED_EMPLOYEE,employee: employee[0]})
+            put({ type: types.ALL_EMPLOYEES, employees: employees }),
         ]);
-    }catch(error){
-        yield put ({type: 'SEARCH_EMPLOYEE_ERROR', error});
+    } catch (error) {
+        yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
     }
+
 }

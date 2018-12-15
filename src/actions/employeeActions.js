@@ -1,6 +1,9 @@
 import * as types from '../constants/actionTypes';
 
-export const searchedEmployeeAction = (payload) => ({
+export const searchedEmployeeAction = (value) => ({
     type: types.SEARCHED_EMPLOYEE,
-    payload
+    value
+})
+export const allEmployees = () => ({
+    type: types.ALL_EMPLOYEES
 })

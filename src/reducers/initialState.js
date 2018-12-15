@@ -1,5 +1,5 @@
 export default {
-    employee: {},
-    employees:[]
+    employee: [],
+    employees: []
 
 }
