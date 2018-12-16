@@ -3,15 +3,15 @@ import { EmployeeData, Employees } from '../api/api';
 import * as types from '../constants/actionTypes';
 
 // export function* searchEmployeeSaga({value}){
-export function* searchEmployeeSaga(value) {
+// export function* searchEmployeeSaga(value) {
 
-    try {
-        yield put({ type: types.SEARCHED_EMPLOYEE, value })
+//     try {
+//         yield put({ type: types.SEARCHED_EMPLOYEE, value })
 
-    } catch (error) {
-        yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
-    }
-}
+//     } catch (error) {
+//         yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
+//     }
+// }
 
 export function* allEmployeesSaga() {
     try {

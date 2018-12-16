@@ -4,7 +4,6 @@ import { searchedEmployeeAction, allEmployees } from '../../actions/employeeActi
 import { connect } from 'react-redux';
 import { Form, Input, Button } from 'antd';
 import './addEmployee.css';
-import { cloneableGenerator } from 'redux-saga/utils';
 import { Table } from 'antd';
 // import employeeSearch from '../../reducers/employeeSearch';
 
@@ -27,7 +26,7 @@ class SearchEmployee extends Component {
   handleSubmitMessage(e) {
     e.preventDefault();
     const data = this.state.value;
-    console.log(data);
+    // console.log(data);
     // this.props.dispatch(searchedEmployeeAction(data))
 
   }
@@ -40,17 +39,18 @@ class SearchEmployee extends Component {
 
   }
 
-  // empdata = () => {
-  //   if (this.props.searchedEmployee.length != 0) {
-  //     return this.props.searchedEmployee;
-  //   }
-  //   else {
-  //     return this.props.employees;
-  //   }
-  // }
+  empdata = () => {
+    if (this.props.searchedEmployee.length != 0) {
+      return this.props.searchedEmployee;
+    }
+    else {
+      return this.props.employees;
+    }
+  }
 
   render() {
-    const empdata = this.props.searchedEmployee;
+    // const empdata = []
+    // this.props.employees;
     const columns = [{
       title: 'first name',
       dataIndex: 'firstName',
@@ -80,9 +80,9 @@ class SearchEmployee extends Component {
           </Form>
         </div>
         <div>
-          <p> {this.props.searchedEmployee} </p>
+          {/* <p> {this.props.searchedEmployee} </p> */}
           <div>
-            <Table columns={columns} dataSource={empdata} size="middle" />
+            <Table columns={columns} dataSource={this.empdata()} size="middle" />
             {/* <h4>Small size table</h4>
                  <Table columns={columns} dataSource={data} size="small" /> */}
           </div>

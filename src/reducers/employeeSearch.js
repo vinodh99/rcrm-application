@@ -38,8 +38,6 @@ const handleSearchedEmployee = (state, action) => {
             }
         }
         newState = Object.assign({}, state, { employee: result })
-        // console.log(newState)
-
     }
     return { ...newState };
 
@@ -59,9 +57,8 @@ export default (state = initialState, action) => {
             // // newState = Object.assign({}, state, action.employee)
             // }
             // return {...newState};
-            return handleSearchedEmployee(state, action, arr);
+            return handleSearchedEmployee(state, action);
         case types.ALL_EMPLOYEES:
-            const arr = action.employees;
             return handleAllEmployeeList(state, action);
 
         default:

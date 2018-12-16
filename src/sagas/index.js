@@ -1,7 +1,10 @@
-import {fork} from 'redux-saga/effects';
-import watchSearchEmployee from './watcher';
+import { fork } from 'redux-saga/effects';
+import watchAllEmployee from './watcher';
 
-export default function* startEmployeeSearch(){
-    yield fork(watchSearchEmployee);
+export default function* startEmployeeSearch() {
+    yield fork(watchAllEmployee);
+    // yield fork(watchSearchEmployee);
+
 }
+
 

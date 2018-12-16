@@ -4,8 +4,11 @@ import * as types from '../constants/actionTypes';
 
 
 
-export default function* watchSearchEmployee() {
+export default function* watchAllEmployee() {
     yield takeLatest(types.ALL_EMPLOYEES, allEmployeesSaga)
-    yield takeLatest(types.SEARCHED_EMPLOYEE, searchEmployeeSaga);
 }
+
+// export function* watchSearchEmployee() {
+//     yield takeLatest(types.SEARCHED_EMPLOYEE, searchEmployeeSaga);
+// }
 
