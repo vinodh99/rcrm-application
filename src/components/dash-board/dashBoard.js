@@ -27,15 +27,6 @@ class DashBoard extends Component {
       this.setState({ isSearchEmp: true, isAddEmp: false });
     }
   }
-  // state = {
-  //   collapsed: false,
-  // };
-
-  // toggle = () => {
-  //   this.setState({
-  //     collapsed: !this.state.collapsed,
-  //   });
-  // }
 
   render() {
 
@@ -46,9 +37,6 @@ class DashBoard extends Component {
       // <div>
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
-        // collapsible
-        // collapsed={this.state.collapsed}
-        // onCollapse={this.onCollapse}
         >
           <div className="logo" />
           <Menu defaultSelectedKeys={['1']} mode="inline">

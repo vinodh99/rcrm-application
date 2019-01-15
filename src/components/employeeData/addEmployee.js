@@ -24,7 +24,7 @@ class AddEmployee extends Component {
         super(props);
         this.state = {
             value: 0,
-
+            primarySkills: []
         }
         this.handleMessageInput = this.handleMessageInput.bind(this);
         this.handleSubmitMessage = this.handleSubmitMessage.bind(this);
@@ -48,42 +48,30 @@ class AddEmployee extends Component {
             if (!err) {
                 // console.log('Received values of form: ', values);
                 console.log("values" + JSON.stringify(values));
-                // request.post('https://swag-api.herokuapp.com/product')
-                // .send(values)
-                // .set('Accept', 'application/json')
-                // .end((err, res) => {
-                //     if (err) {
-                //         console.log('no error');
-                //     } else {
-                //         console.log('success');
-                //     }
-                // });
-
+                request.post('https://swag-api.herokuapp.com/product')
+                    .send(values)
+                    .set('Accept', 'application/json')
+                    .end((err, res) => {
+                        if (err) {
+                            console.log('no error');
+                        } else {
+                            console.log('success');
+                        }
+                    });
             }
         });
-        const data = {
-            // firstName: this.state.firstName,
-            // lastName: this.state.lastName,
-            // emailAddress: this.state.emailAddress,
-            // homePhone: this.state.homePhone,
-            // workPhone: this.state.workPhone,
-            // dob: this.state.dob
-        };
-        // console.log(data);
-        // request.post('https://swag-api.herokuapp.com/product')
-        //     .send(data)
-        //     .set('Accept', 'application/json')
-        //     .end((err, res) => {
-        //         if (err) {
-        //             console.log('no error');
-        //         } else {
-        //             console.log('success');
-        //         }
-        //     });
-
     }
-
+    primarySkills = (value) => {
+        this.setState({
+            primarySkills: value
+        })
+    }
     render() {
+
+        const children = [];
+        for (let i = 10; i < 36; i++) {
+            children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
+        }
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
             labelCol: {
@@ -163,6 +151,7 @@ class AddEmployee extends Component {
                                                 value={this.state.homePhone}
                                                 onChange={this.handleMessageInput}
                                                 placeholder="Email Address"
+                                                style={{ textAlign: 'center' }}
                                             />)}
                                     </FormItem>
 
@@ -264,13 +253,6 @@ class AddEmployee extends Component {
 
                                     </FormItem>
 
-                                    {/* <Input
-                                        name="Country"
-                                        type="value"
-                                        value={this.state.dob}
-                                        onChange={this.handleMessageInput}
-                                        placeholder="Country"
-                                    /> */}
                                 </Row>
                                 <Row>
                                     <FormItem {...formItemLayout} label='State'>
@@ -280,8 +262,8 @@ class AddEmployee extends Component {
                                             <Input
                                                 name="State"
                                                 type="value"
-                                                value={this.state.dob}
-                                                onChange={this.handleMessageInput}
+                                                // value={this.state.dob}
+                                                // onChange={this.handleMessageInput}
                                                 placeholder="State"
                                             />)}
                                     </FormItem>
@@ -295,8 +277,8 @@ class AddEmployee extends Component {
                                             <Input
                                                 name="technology"
                                                 type="value"
-                                                value={this.state.dob}
-                                                onChange={this.handleMessageInput}
+                                                // value={this.state.dob}
+                                                // onChange={this.handleMessageInput}
                                                 placeholder="Technology"
                                             />)}
                                     </FormItem>
@@ -307,13 +289,21 @@ class AddEmployee extends Component {
                                         {getFieldDecorator('Primary-skills', {
                                             rules: [{ required: true, message: 'Please input your Primary skills!' }],
                                         })(
-                                            <Input
-                                                name="primary-skills"
-                                                type="value"
-                                                value={this.state.dob}
-                                                onChange={this.handleMessageInput}
-                                                placeholder="Primary-skills"
-                                            />)}
+                                            <Select
+                                                mode="multiple"
+                                                style={{ width: '100%' }}
+                                                defaultValue={['java']}
+                                            >
+                                                {children}
+                                            </Select>
+                                            // <Input
+                                            //     name="primary-skills"
+                                            //     type="value"
+                                            //     value={this.state.dob}
+                                            //     onChange={this.handleMessageInput}
+                                            //     placeholder="Primary-skills"
+                                            // />
+                                        )}
                                     </FormItem>
 
                                 </Row>
@@ -387,13 +377,7 @@ class AddEmployee extends Component {
                                         )}
 
                                     </FormItem>
-                                    {/* <Input
-                                        name="homePhone"
-                                        type="value"
-                                        value={this.state.homePhone}
-                                        onChange={this.handleMessageInput}
-                                        placeholder="home-phone"
-                                    /> */}
+
                                 </Row>
                                 <Row>
                                     <FormItem {...formItemLayout} label='Linked-In'>

@@ -7,3 +7,8 @@ export const searchedEmployeeAction = (value) => ({
 export const allEmployees = () => ({
     type: types.ALL_EMPLOYEES
 })
+
+export const postEmployeedata = (data) => ({
+    type: types.POST_DATA,
+    data
+})

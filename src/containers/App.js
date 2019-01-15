@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {IndexLink, Link} from 'react-router';
+import { IndexLink, Link } from 'react-router';
 import PropTypes from 'prop-types';
 import AddEmployee from '../components/employeeData/addEmployee';
 import DashBoard from '../components/dash-board/dashBoard';
@@ -8,7 +8,7 @@ import configureStore from '../store/configureStore';
 // import logo from './logo.svg';
 import './App.css';
 // import Header from '../components/Header';
-import { Provider } from 'react-redux';  
+import { Provider } from 'react-redux';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -18,12 +18,11 @@ class App extends Component {
   render() {
     return (
       <div>
-            {/* <Provider store={store}> */}
+        {/* <Provider store={store}> */}
+        <Routes />
 
-                <Routes />
 
-
-          {/* </Provider> */}
+        {/* </Provider> */}
 
       </div>
     )
