@@ -75,6 +75,8 @@ class SearchEmployee extends Component {
               value={this.state.value}
               onChange={this.handleMessageInput}
             />
+            <br />
+            <br />
             <Button>search</Button>
 
           </Form>

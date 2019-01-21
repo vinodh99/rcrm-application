@@ -3,6 +3,8 @@ import './dashBoard.css';
 // import ContentData from '../content/index.js';
 import AddEmployee from '../employeeData/addEmployee';
 import SearchEmployee from '../employeeData/searchEmployee';
+import WrappedDemo from '../employeeData/documents';
+import EdDetails from '../employeeData/educationDetails'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { NavLink, Link } from "react-router-dom";
 
@@ -16,21 +18,34 @@ class DashBoard extends Component {
     super(props);
     this.state = {
       isAddEmp: false,
-      isSearchEmp: false
+      isSearchEmp: false,
+      isdoc: false,
+      isEdDetails: false
     };
   }
 
-  onButtonClicked = (isAdd) => {
-    if (isAdd === "add") {
-      this.setState({ isAddEmp: true, isSearchEmp: false });
-    } else {
-      this.setState({ isSearchEmp: true, isAddEmp: false });
+  onButtonClicked = (comp) => {
+    switch (comp) {
+      case "add":
+        this.setState({ isAddEmp: true, isSearchEmp: false, isdoc: false, isEdDetails: false });
+        break;
+      case "search":
+        this.setState({ isSearchEmp: true, isAddEmp: false, isdoc: false, isEdDetails: false });
+        break;
+      case "doc":
+        this.setState({ isdoc: true, isAddEmp: false, isSearchEmp: false, isEdDetails: false });
+        break;
+      case "edDetails":
+        this.setState({ isEdDetails: true, isdoc: false, isAddEmp: false, isSearchEmp: false })
+        break;
+      default:
+        this.setState({ isAddEmp: true, isSearchEmp: false });
     }
   }
 
   render() {
 
-    const { isAddEmp, isSearchEmp } = this.state;
+    const { isAddEmp, isSearchEmp, isdoc, isEdDetails } = this.state;
 
 
     return (
@@ -44,35 +59,28 @@ class DashBoard extends Component {
 
             <SubMenu
               key="sub1"
-              title={<span><Icon type="user" /><span>Perosnal Details</span></span>}
+              title={<span><Icon type="user" /><span>Personal Details</span></span>}
             >
               <Menu.Item key="1" onClick={() => this.onButtonClicked("add")} >Add Applicant</Menu.Item>
-              <Menu.Item key="2" onClick={() => this.onButtonClicked("")}>Search Applicant</Menu.Item>
+              <Menu.Item key="2" onClick={() => this.onButtonClicked("search")}>Search Applicant</Menu.Item>
             </SubMenu>
-            <Menu.Item key="3">
+            <Menu.Item key="3" onClick={() => this.onButtonClicked("doc")}>
               <Icon type="desktop" />
               <span>Documents</span>
             </Menu.Item>
-            <SubMenu
-              key="sub2"
-              title={<span><Icon type="user" /><span>Education Details</span></span>}
-            >
-              <Menu.Item key="4">Tom</Menu.Item>
-              <Menu.Item key="5">Bill</Menu.Item>
-              <Menu.Item key="6">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub3"
-              title={<span><Icon type="team" /><span>Certifications</span></span>}
-            >
-              <Menu.Item key="7">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9">
+            <Menu.Item key="4" onClick={() => this.onButtonClicked("edDetails")}>
+              <Icon type="book" />
+              <span>Education</span>
+            </Menu.Item>
+            <Menu.Item key="5">
+              <Icon type="book" />
+              <span>Certifications</span>
+            </Menu.Item>
+            <Menu.Item key="6">
               <Icon type="file" />
               <span>Language</span>
             </Menu.Item>
-            <Menu.Item key="10">
+            <Menu.Item key="7">
               <Icon type="file" />
               <span>Work Experience</span>
             </Menu.Item>
@@ -86,7 +94,8 @@ class DashBoard extends Component {
             <Link to={{ pathname: "/SearchEmployee" }}>Search Employee</Link> */}
             {(isAddEmp ? (<AddEmployee {...this.props} />) : (""))}
             {(isSearchEmp ? (<SearchEmployee  {...this.props} />) : (""))}
-
+            {(isdoc ? (<WrappedDemo  {...this.props} />) : (""))}
+            {(isEdDetails ? (<EdDetails {...this.props} />) : (""))}
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             {/* Ant Design ©2018 Created by Ant UED */}

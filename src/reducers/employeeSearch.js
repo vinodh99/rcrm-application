@@ -4,7 +4,7 @@ import * as types from '../constants/actionTypes';
 
 const handleAllEmployeeList = (state, action) => {
     let newState = { ...state };
-    if (action.employees != undefined) {
+    if (action.employees !== undefined) {
         newState = Object.assign({}, state, { employees: action.employees })
     }
     // console.log(newState)
@@ -15,7 +15,7 @@ const handleAllEmployeeList = (state, action) => {
 const handleSearchedEmployee = (state, action) => {
     // console.log('im reducer')
     let newState = { ...state };
-    if (action.value != undefined) {
+    if (action.value !== undefined) {
         let result = [];
         for (let val in state.employees) {
             if (state.employees[val].firstName.match(action.value)) {

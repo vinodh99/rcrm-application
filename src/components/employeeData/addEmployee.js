@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 // import { request } from 'http';
 import request from 'superagent';
-import { Radio, Icon, Form, Input, Row, Col, Button, Select, Cascader } from 'antd';
+import { Radio, Form, Input, Row, Col, Button, Select, Cascader } from 'antd';
 import './addEmployee.css';
 // import { Layout, Menu, Icon } from 'antd';
 // import './index.css'; 
@@ -69,9 +69,12 @@ class AddEmployee extends Component {
     render() {
 
         const children = [];
-        for (let i = 10; i < 36; i++) {
-            children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
+        const arr = ['java', 'python', 'javascript', 'Node.js', 'SQL', 'mongoDB', 'HTLM5']
+        for (let i = 0; i < arr.length; i++) {
+            children.push(<Option key={(i + 10).toString(36) + i}>{arr[i]}</Option>);
         }
+        console.log(children)
+
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
             labelCol: {

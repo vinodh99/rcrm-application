@@ -22,3 +22,14 @@ h4 { margin-bottom: 16px; }
 /* .submit{
   align-content: flex-start
 } */
+.resume .ant-cascader-menus{
+  width: 100%;
+}
+
+
+.ant-cascader-menus{
+  width:24%;
+}
+.ant-cascader-menu{
+  width: 100%;
+}
