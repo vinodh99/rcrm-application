@@ -19,6 +19,7 @@ class EdDetails extends Component {
     getFields() {
         // const count = this.state.expand ? 10 : 6;
         const { getFieldDecorator } = this.props.form;
+
         const formItemLayout = {
             labelCol: { span: 6 },
             wrapperCol: { span: 14 }
@@ -133,6 +134,7 @@ class EdDetails extends Component {
         )
     }
     render() {
+
         return (
             < div >
                 {this.university()}
