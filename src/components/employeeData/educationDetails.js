@@ -4,13 +4,13 @@ import 'antd/dist/antd.css';
 import {
     Form, Row, Col, Input, Button, Icon, Card
 } from 'antd';
-
 class EdDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
             expand: false,
-            universityList: [this.university()]
+            universityList: [this.university()],
+            count: 0
         };
     }
 
@@ -68,7 +68,11 @@ class EdDetails extends Component {
             console.log('Received values of form: ', values);
         });
     }
-
+    componentDidMount() {
+        this.setState({
+            count: this.state.count + 1
+        })
+    }
     handleReset = () => {
         this.props.form.resetFields();
     }
@@ -77,13 +81,35 @@ class EdDetails extends Component {
         const { expand } = this.state;
         this.setState({ expand: !expand });
     }
-    university = () => {
+    changeList = () => {
+        console.log(this.state.count)
+        this.setState({
+            count: this.state.count + 1,
+            universityList: [...this.state.universityList, this.university(this.state.count)],
+        })
+        console.log(this.state.count)
+        // val++;
+
+
+        // this.setState({ universityList: [this.state.universityList[0].splice(1)] })
+    }
+    deleteList = (e) => {
+        console.log("target value", e.target.value)
+        let array = [...this.state.universityList]; // make a separate copy of the array
+        // let index = array.indexOf(e.target.value)
+        // if (index !== -1) {
+        array.splice(e.target.value);
+        this.setState({ universityList: array });
+        // }
+    }
+    university = (value) => {
+        // const { i } = this.state.i;
         return (
-            <div>
+            <div style={{ paddingBottom: 40 }}>
                 <Card
                     type="inner"
                     title="University / School"
-                    extra={<a href="#">Delete</a>}
+                    extra={<Button value={value} onClick={(e) => this.deleteList(e)}>Delete</Button>}
                 >
                     <Form
                         className="ant-advanced-search-form"
@@ -106,17 +132,20 @@ class EdDetails extends Component {
             </div>
         )
     }
-    changeList = () => {
-        this.setState({ universityList: [...this.state.universityList, this.university()] })
-    }
     render() {
         return (
-            <div>
-                {this.state.universityList}
-                <Button style={{ marginTop: 8 }} onClick={e => this.changeList(true, e)}>
+            < div >
+                {this.university()}
+
+                <div>
+                    {this.state.universityList.map((university, index) => (
+                        <div key={index}>{university}</div>
+                    ))}
+                </div>
+                <Button value={this.state.count} style={{ marginTop: 8 }} onClick={e => this.changeList(e)}>
                     <Icon type="plus" />Add another school/University
                 </Button>
-            </div>
+            </div >
         );
     }
 }
