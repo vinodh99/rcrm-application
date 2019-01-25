@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import './dashBoard.css';
-// import ContentData from '../content/index.js';
 import AddEmployee from '../employeeData/addEmployee';
 import SearchEmployee from '../employeeData/searchEmployee';
 import WrappedDemo from '../employeeData/documents';
 import EdDetails from '../employeeData/educationDetails'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import { NavLink, Link } from "react-router-dom";
+import { Layout, Menu, Icon } from 'antd';
 
-
-const { Header, Content, Footer, Sider, Row, Col } = Layout;
+const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class DashBoard extends Component {

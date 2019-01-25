@@ -1,5 +1,5 @@
-import { all, put, call } from 'redux-saga/effects';
-import { EmployeeData, Employees } from '../api/api';
+import { put, call } from 'redux-saga/effects';
+import { Employees } from '../api/api';
 import * as types from '../constants/actionTypes';
 
 // export function* searchEmployeeSaga({value}){

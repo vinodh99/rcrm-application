@@ -1,12 +1,10 @@
 
 import React, { Component } from 'react';
-// import { request } from 'http';
 import request from 'superagent';
 import { Radio, Form, Input, Row, Col, Button, Select, Cascader } from 'antd';
 import './addEmployee.css';
-// import { Layout, Menu, Icon } from 'antd';
-// import './index.css'; 
-// const { Header, Sider, Content, Footer } = Layout;
+import { postEmployeeData } from '../../actions/employeeActions';
+
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
 const FormItem = Form.Item;
@@ -47,17 +45,22 @@ class AddEmployee extends Component {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 // console.log('Received values of form: ', values);
-                console.log("values" + JSON.stringify(values));
-                request.post('https://swag-api.herokuapp.com/product')
-                    .send(values)
-                    .set('Accept', 'application/json')
-                    .end((err, res) => {
-                        if (err) {
-                            console.log('no error');
-                        } else {
-                            console.log('success');
-                        }
-                    });
+                // console.log(values)
+                // console.log("values" + JSON.stringify(values));
+                this.props.dispatch(postEmployeeData(values))
+                // request.post('https://swag-api.herokuapp.com/product')
+                //     .send(values)
+                //     .set('Accept', 'application/json')
+                //     .end((err, res) => {
+                //         if (err) {
+                //             console.log('no error');
+                //         } else {
+                //             console.log('success');
+                //         }
+                //     });
+            }
+            else {
+                console.log(err)
             }
         });
     }

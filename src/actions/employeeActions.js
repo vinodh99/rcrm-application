@@ -8,7 +8,7 @@ export const allEmployees = () => ({
     type: types.ALL_EMPLOYEES
 })
 
-export const postEmployeedata = (data) => ({
+export const postEmployeeData = (data) => ({
     type: types.POST_DATA,
     data
 })
