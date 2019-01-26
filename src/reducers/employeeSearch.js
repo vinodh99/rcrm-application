@@ -27,7 +27,12 @@ const handleSearchedEmployee = (state, action) => {
     return { ...newState };
 
 }
-
+const postData = (state, action) => {
+    let newState = { ...state };
+    if (action.value !== undefined) {
+        console.log(action.value)
+    }
+}
 
 export default (state = initialState, action) => {
     // console.log('im reducer')
@@ -45,7 +50,8 @@ export default (state = initialState, action) => {
             return handleSearchedEmployee(state, action);
         case types.ALL_EMPLOYEES:
             return handleAllEmployeeList(state, action);
-
+        case types.POST_DATA:
+            return postData(state, action);
         default:
             return state;
     }
