@@ -4,6 +4,7 @@ import request from 'superagent';
 import { Radio, Form, Input, Row, Col, Button, Select, Cascader } from 'antd';
 import './addEmployee.css';
 import { postEmployeeData } from '../../actions/employeeActions';
+import { connect } from 'react-redux'
 
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
@@ -524,6 +525,12 @@ class AddEmployee extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        success: state.employee.success
+    }
+}
 
 const wrappedAddEmployee = Form.create()(AddEmployee)
-export default wrappedAddEmployee;
+export default connect(mapStateToProps)(wrappedAddEmployee);

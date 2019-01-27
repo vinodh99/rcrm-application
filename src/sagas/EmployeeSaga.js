@@ -1,5 +1,5 @@
 import { put, call } from 'redux-saga/effects';
-import { Employees } from '../api/api';
+import { Employees, postData } from '../api/api';
 import * as types from '../constants/actionTypes';
 
 // export function* searchEmployeeSaga({value}){
@@ -27,4 +27,15 @@ export function* allEmployeesSaga() {
         yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
     }
 
+}
+
+export function* postDataSaga(action) {
+    try {
+        console.log(action.value)
+        yield call(postData(), action.values)
+        yield put({ type: types.POST_DATA })
+    }
+    catch (error) {
+        yield put({ type: 'ADD_EMPLOYEE_ERROR', error })
+    }
 }

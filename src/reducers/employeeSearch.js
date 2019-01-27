@@ -1,7 +1,7 @@
 import initialState from './initialState';
 import * as types from '../constants/actionTypes';
 
-
+const baseURL = 'ec2-52-24-8-126.us-west-2.compute.amazonaws.com:8080/';
 const handleAllEmployeeList = (state, action) => {
     let newState = { ...state };
     if (action.employees !== undefined) {
@@ -29,9 +29,10 @@ const handleSearchedEmployee = (state, action) => {
 }
 const postData = (state, action) => {
     let newState = { ...state };
-    if (action.value !== undefined) {
-        console.log(action.value)
+    if (action.value === "success") {
+        newState = Object.assign({}, state, { success: "success" })
     }
+    return { ...newState }
 }
 
 export default (state = initialState, action) => {

@@ -3,7 +3,6 @@ import "antd/dist/antd.css";
 import "./addEmployee.css";
 import {
     Form,
-    Select,
     Button,
     Upload,
     Radio,
