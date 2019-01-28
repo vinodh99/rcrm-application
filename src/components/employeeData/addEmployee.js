@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import request from 'superagent';
-import { Radio, Form, Input, Row, Col, Button, Select, Cascader } from 'antd';
+import { Radio, Form, Input, Row, Col, Button, Select } from 'antd';
 import './addEmployee.css';
 import { postEmployeeData } from '../../actions/employeeActions';
 import { connect } from 'react-redux'
@@ -70,6 +70,82 @@ class AddEmployee extends Component {
             primarySkills: value
         })
     }
+    getFields() {
+        // const count = this.state.expand ? 10 : 6;
+        const { getFieldDecorator } = this.props.form;
+
+        const formItemLayout = {
+            labelCol: { span: 6 },
+            wrapperCol: { span: 14 }
+        };
+        const children = [];
+        const fields = [['School/University', 'Name'], ['Degree', 'Bachelors/Masters'], ['Years Completed', 'years'], ['Major Study', 'Specialization'], ['Minor Study', 'field'], ['GPA', ''], ['Country', ''], ['State', ''], ['City', '']];
+        for (let i = 0; i < fields.length; i++) {
+            if (i === 0 || i === 1 || i === 2 || i === 3) {
+                children.push(
+                    <Col span={12} key={i}>
+                        <Form.Item {...formItemLayout} label={`${fields[i][0]}`}>
+                            {getFieldDecorator(`field-${i}`, {
+                                rules: [{
+                                    required: true,
+                                    message: 'Input something!',
+                                }],
+                            })(
+                                <Input placeholder={fields[i][1]} />
+                            )}
+                        </Form.Item>
+                    </Col>
+                );
+            }
+            else {
+                children.push(
+                    <Col span={12} key={i}>
+                        <Form.Item {...formItemLayout} label={`${fields[i][0]}`}>
+                            {getFieldDecorator(`field-${i}`, {
+                                rules: [{
+                                    required: false,
+                                    // message: 'Input something!',
+                                }],
+                            })(
+                                <Input placeholder={fields[i][1]} />
+                            )}
+                        </Form.Item>
+                    </Col>
+                );
+            }
+        }
+        return children;
+    }
+    Employee = (value) => {
+        // const { i } = this.state.i;
+        return (
+            <div style={{ paddingBottom: 40 }}>
+                {/* <Card
+                    type="inner"
+                    title="University / School"
+                    extra={<Button value={value} onClick={(e) => this.deleteList(e)}>Delete</Button>}
+                > */}
+                <Form
+                    className="ant-advanced-search-form"
+                    onSubmit={this.handleSearch}
+                >
+                    <Row gutter={24}>{this.getFields()}</Row>
+                    <Row>
+                        <Col span={24} style={{ textAlign: 'right' }}>
+                            <Button type="primary" htmlType="submit">Submit</Button>
+                            <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
+                                Clear
+                            </Button>
+                            {/* <a style={{ marginLeft: 8, fontSize: 12 }} onClick={this.toggle}>
+                                Collapse <Icon type={this.state.expand ? 'up' : 'down'} />
+                            </a> */}
+                        </Col>
+                    </Row>
+                </Form>
+                {/* </Card> */}
+            </div>
+        )
+    }
     render() {
 
         const children = [];
@@ -77,7 +153,7 @@ class AddEmployee extends Component {
         for (let i = 0; i < arr.length; i++) {
             children.push(<Option key={(i + 10).toString(36) + i}>{arr[i]}</Option>);
         }
-        console.log(children)
+        // console.log(children)
 
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
@@ -102,9 +178,9 @@ class AddEmployee extends Component {
         return (
             <div>
                 <div >
-                    <Form >
+                    <Form
+                        onSubmit={this.handleSubmitMessage} >
                         <h1>Add Applicant</h1>
-
                         <Row gutter={80}>
 
                             <Col span={4}>
@@ -112,7 +188,11 @@ class AddEmployee extends Component {
                                     <img src='http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png' default='image' height='200px' width='200px'></img>
                                 </div>
                             </Col>
-                            <Col span={10} >
+                            <Col span={20}>
+                                {this.Employee()}
+                            </Col>
+
+                            {/* <Col span={10} >
                                 <Row >
                                     <FormItem {...formItemLayout} label='First-Name'>
                                         {getFieldDecorator('firstName', {
@@ -317,13 +397,13 @@ class AddEmployee extends Component {
                                 <Row>
                                     <FormItem style={{ float: 'right', width: '66.5%' }}>
                                         {/* {getFieldDecorator('submit', { */}
-                                        {/* rules: [{ required: true, message: 'Please input your skills!' }], */}
-                                        {/* })( */}
-                                        <Button type='Submit' onClick={this.handleSubmitMessage}>Submit</Button>
-                                        {/* )} */}
-                                    </FormItem>
-                                </Row>
-                            </Col>
+                            {/* rules: [{ required: true, message: 'Please input your skills!' }], */}
+                            {/* })( */}
+                            {/* <Button type='Submit' onClick={this.handleSubmitMessage}>Submit</Button> */}
+                            {/* )} */}
+                            {/* </FormItem> */}
+                            {/* </Row> */}
+                            {/* </Col>
                             <Col span={10}>
                                 <Row>
                                     <FormItem {...formItemLayout} label='Middle-Name'>
@@ -512,12 +592,9 @@ class AddEmployee extends Component {
                                             />)}
                                     </FormItem>
 
-                                </Row>
-                            </Col>
-
-
+                                </Row> */}
+                            {/* </Col> */}
                         </Row>
-
                     </Form>
                 </div >
             </div >

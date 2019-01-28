@@ -31,7 +31,7 @@ export function* allEmployeesSaga() {
 
 export function* postDataSaga(action) {
     try {
-        console.log(action.value)
+        console.log(action)
         yield call(postData(), action.values)
         yield put({ type: types.POST_DATA })
     }
