@@ -40,7 +40,7 @@ class SearchEmployee extends Component {
   }
 
   empdata = () => {
-    if (this.props.searchedEmployee.length != 0) {
+    if (this.props.searchedEmployee.length !== 0) {
       return this.props.searchedEmployee;
     }
     else {
@@ -54,15 +54,15 @@ class SearchEmployee extends Component {
     const columns = [{
       title: 'first name',
       dataIndex: 'firstName',
-      // key: '10',
+      key: '1',
     }, {
       title: 'lastName',
       dataIndex: 'lastName',
-      // key: '2',
+      key: '2',
     }, {
-      title: 'homePhone',
-      dataIndex: 'homePhone',
-      // key: 'homePhone',
+      title: 'Email Address',
+      dataIndex: 'emailAddress',
+      key: '3',
     }];
     // console.log(this.props);
     return (
@@ -99,10 +99,7 @@ SearchEmployee.propTypes = {
   // Define your PropTypes here
 };
 const mapStateToProps = (state) => {
-  // console.log('hello ' + JSON.stringify(state))
-  // const jsondata = Object.keys(state.employee.employees).map(function(key) {
-  //   return [state.employee.employees[key]];
-  // })
+
   return {
     searchedEmployee: state.employee.employee,
     employees: state.employee.employees

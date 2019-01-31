@@ -1,6 +1,6 @@
 // import { resolve } from "url";
 // const baseUrl = 'http://localhost:3010';
-const baseUrl = 'ec2-52-24-8-126.us-west-2.compute.amazonaws.com:8080/';
+const baseUrl = 'http://ec2-52-24-8-126.us-west-2.compute.amazonaws.com:8080';
 // let that = this;
 export const EmployeeData = (searchQuery) => {
     //1
@@ -29,7 +29,7 @@ export const Employees = () => {
     //1
     var promise = new Promise((resolve, reject) => {
         //        2
-        fetch(`${baseUrl}/products`)
+        fetch(`${baseUrl}/candidate/all`)
             .then(res => {
                 //then is chained to whatever fetch is returning
                 // 4
@@ -47,6 +47,7 @@ export const Employees = () => {
 
 export const postData = (values) => {
     // let newState = { ...state };
+    console.log("psotdata", values)
     if (values !== undefined) {
 
         let data = new FormData();

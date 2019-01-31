@@ -45,20 +45,10 @@ class AddEmployee extends Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                // console.log('Received values of form: ', values);
-                // console.log(values)
-                // console.log("values" + JSON.stringify(values));
+                console.log(values)
+
                 this.props.dispatch(postEmployeeData(values))
-                // request.post('https://swag-api.herokuapp.com/product')
-                //     .send(values)
-                //     .set('Accept', 'application/json')
-                //     .end((err, res) => {
-                //         if (err) {
-                //             console.log('no error');
-                //         } else {
-                //             console.log('success');
-                //         }
-                //     });
+
             }
             else {
                 console.log(err)
@@ -71,7 +61,6 @@ class AddEmployee extends Component {
         })
     }
     getFields() {
-        // const count = this.state.expand ? 10 : 6;
         const { getFieldDecorator } = this.props.form;
 
         const formItemLayout = {
@@ -79,13 +68,13 @@ class AddEmployee extends Component {
             wrapperCol: { span: 14 }
         };
         const children = [];
-        const fields = [['School/University', 'Name'], ['Degree', 'Bachelors/Masters'], ['Years Completed', 'years'], ['Major Study', 'Specialization'], ['Minor Study', 'field'], ['GPA', ''], ['Country', ''], ['State', ''], ['City', '']];
+        const fields = [['firstName', 'firstName', 'First Name'], ['middleName', 'middleName', 'Middle Name'], ['lastName', 'lastName', 'Last Name'], ['mobileNumber', 'mobileNumber', 'mobileNumber'], ['postalCode', 'postalCode', 'Postal Code'], ['experience', 'experience', 'experience'], ['jobTitle', 'jobTitle', 'Job Title'], ['linkedinProfileUrl', 'linkedinProfileUrl', 'linkedin']];
         for (let i = 0; i < fields.length; i++) {
             if (i === 0 || i === 1 || i === 2 || i === 3) {
                 children.push(
                     <Col span={12} key={i}>
-                        <Form.Item {...formItemLayout} label={`${fields[i][0]}`}>
-                            {getFieldDecorator(`field-${i}`, {
+                        <Form.Item {...formItemLayout} label={`${fields[i][2]}`}>
+                            {getFieldDecorator(`${fields[i][0]}`, {
                                 rules: [{
                                     required: true,
                                     message: 'Input something!',
@@ -100,8 +89,8 @@ class AddEmployee extends Component {
             else {
                 children.push(
                     <Col span={12} key={i}>
-                        <Form.Item {...formItemLayout} label={`${fields[i][0]}`}>
-                            {getFieldDecorator(`field-${i}`, {
+                        <Form.Item {...formItemLayout} label={`${fields[i][2]}`}>
+                            {getFieldDecorator(`${fields[i][0]}`, {
                                 rules: [{
                                     required: false,
                                     // message: 'Input something!',

@@ -12,7 +12,7 @@ import * as types from '../constants/actionTypes';
 //         yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
 //     }
 // }
-
+const baseUrl = 'http://ec2-52-24-8-126.us-west-2.compute.amazonaws.com:8080';
 export function* allEmployeesSaga() {
     try {
         // console.log(payload+'here I am ');
@@ -31,8 +31,23 @@ export function* allEmployeesSaga() {
 
 export function* postDataSaga(action) {
     try {
-        console.log(action)
-        yield call(postData(), action.values)
+        console.log("herheherherherh", action.data)
+        const { firstName, lastName, emailAddress } = action.data;
+        const d = { firstName, lastName, emailAddress };
+        const response = yield call(fetch, `${baseUrl}/candidate/save`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+                // 'Content-Type' :'multipart/form-data, application/x-www-form-urlencoded; charset=utf-8'
+            },
+            body: JSON.stringify(action.data)
+        })
+        setTimeout(function () {
+            if (response) {
+                console.log("im response", response)
+            }
+        }, 3000);
         yield put({ type: types.POST_DATA })
     }
     catch (error) {
