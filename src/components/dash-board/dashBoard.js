@@ -4,6 +4,7 @@ import AddEmployee from '../employeeData/addEmployee';
 import SearchEmployee from '../employeeData/searchEmployee';
 import WrappedDemo from '../employeeData/documents';
 import EdDetails from '../employeeData/educationDetails'
+import Home from './home'
 import { Layout, Menu, Icon } from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -17,23 +18,27 @@ class DashBoard extends Component {
       isAddEmp: false,
       isSearchEmp: false,
       isdoc: false,
-      isEdDetails: false
+      isEdDetails: false,
+      isHome: true
     };
   }
 
   onButtonClicked = (comp) => {
     switch (comp) {
+      case "home":
+        this.setState({ ishome: true, isAddEmp: true, isSearchEmp: false, isdoc: false, isEdDetails: false });
+        break;
       case "add":
-        this.setState({ isAddEmp: true, isSearchEmp: false, isdoc: false, isEdDetails: false });
+        this.setState({ isAddEmp: true, isSearchEmp: false, isdoc: false, isEdDetails: false, isHome: false });
         break;
       case "search":
-        this.setState({ isSearchEmp: true, isAddEmp: false, isdoc: false, isEdDetails: false });
+        this.setState({ isSearchEmp: true, isAddEmp: false, isdoc: false, isEdDetails: false, isHome: false });
         break;
       case "doc":
-        this.setState({ isdoc: true, isAddEmp: false, isSearchEmp: false, isEdDetails: false });
+        this.setState({ isdoc: true, isAddEmp: false, isSearchEmp: false, isEdDetails: false, isHome: false });
         break;
       case "edDetails":
-        this.setState({ isEdDetails: true, isdoc: false, isAddEmp: false, isSearchEmp: false })
+        this.setState({ isEdDetails: true, isdoc: false, isAddEmp: false, isSearchEmp: false, isHome: false })
         break;
       default:
         this.setState({ isAddEmp: true, isSearchEmp: false });
@@ -42,14 +47,13 @@ class DashBoard extends Component {
 
   render() {
 
-    const { isAddEmp, isSearchEmp, isdoc, isEdDetails } = this.state;
+    const { isAddEmp, isSearchEmp, isdoc, isEdDetails, isHome } = this.state;
 
 
     return (
       // <div>
       <Layout style={{ minHeight: '100vh' }}>
-        <Sider
-        >
+        <Sider>
           <div className="logo" />
           <Menu defaultSelectedKeys={['1']} mode="inline">
             <img src="https://rsrit.com/wp-content/uploads/2017/12/logo_dark.png" alt="image" width="200px" height="70px"></img>
@@ -89,6 +93,7 @@ class DashBoard extends Component {
             {/* <Link to={{ pathname: "/AddEmployee" }}>Add Employee</Link>
             {"|"}
             <Link to={{ pathname: "/SearchEmployee" }}>Search Employee</Link> */}
+            {(isHome ? (<Home {...this.props} />) : (""))}
             {(isAddEmp ? (<AddEmployee {...this.props} />) : (""))}
             {(isSearchEmp ? (<SearchEmployee  {...this.props} />) : (""))}
             {(isdoc ? (<WrappedDemo  {...this.props} />) : (""))}

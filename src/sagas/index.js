@@ -3,8 +3,6 @@ import watchAllEmployee from './watcher';
 
 export default function* startEmployeeSearch() {
     yield fork(watchAllEmployee);
-    // yield fork(watchSearchEmployee);
-
 }
 
 

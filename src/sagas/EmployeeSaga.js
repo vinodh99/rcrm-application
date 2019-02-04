@@ -2,16 +2,7 @@ import { put, call } from 'redux-saga/effects';
 import { Employees, postData } from '../api/api';
 import * as types from '../constants/actionTypes';
 
-// export function* searchEmployeeSaga({value}){
-// export function* searchEmployeeSaga(value) {
 
-//     try {
-//         yield put({ type: types.SEARCHED_EMPLOYEE, value })
-
-//     } catch (error) {
-//         yield put({ type: 'SEARCH_EMPLOYEE_ERROR', error });
-//     }
-// }
 const baseUrl = 'http://ec2-52-24-8-126.us-west-2.compute.amazonaws.com:8080';
 export function* allEmployeesSaga() {
     try {
@@ -48,7 +39,7 @@ export function* postDataSaga(action) {
                 console.log("im response", response)
             }
         }, 3000);
-        yield put({ type: types.POST_DATA })
+        yield put({ type: types.POST_DATA, data: "success" })
     }
     catch (error) {
         yield put({ type: 'ADD_EMPLOYEE_ERROR', error })

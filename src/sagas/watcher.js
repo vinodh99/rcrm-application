@@ -9,7 +9,3 @@ export default function* watchAllEmployee() {
     yield takeLatest(types.POST_DATA, postDataSaga)
 }
 
-// export function* watchSearchEmployee() {
-//     yield takeLatest(types.SEARCHED_EMPLOYEE, searchEmployeeSaga);
-// }
-
